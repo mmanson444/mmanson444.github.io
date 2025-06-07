@@ -30,36 +30,58 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Number Multiplier App -->
-        <div id="multiplier-app" class="app-section active">
-            <div class="container">
-                <h1>Number Multiplier</h1>
-                <div class="converter-section">
-                    <p>Enter a number and select an operation to multiply it.</p>
-                    
-                    <div class="input-group">
-                        <label for="inputNumber">Enter your number:</label>
-                        <input type="number" id="inputNumber" placeholder="Enter a number">
-                        <select id="operation" onchange="displaySelection()">
-                            <option value="double">double</option>
-                            <option value="triple">triple</option>
-                        </select>
-                    </div>
-                    
-                    <div id="selection-display" class="display-area">
-                        double
-                    </div>
-                    
-                    <div class="button-group">
-                        <button onclick="calculateResult()">Calculate</button>
-                        <button onclick="clearResult()" class="clear">Clear</button>
-                    </div>
-                    
-                    <div id="calculation-result" class="display-area result">
-                        <!-- Calculation result will be displayed here -->
-                    </div>
-                </div>
+        <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Temperature Converter</title>
+        <link rel="stylesheet" href="temp-converter.css">
+    </head>
+    <body>
+        <h1>Temperature Converter</h1>
+        
+        <div class="converter-section">
+            <p>Enter a temperature value and select the conversion type.</p>
+            
+            <!-- getting the number input from the user -->
+            <div class="input-group">
+                <label for="temperature">Temperature:</label>
+                <input type="number" id="temperature" placeholder="Enter value">
             </div>
+            
+            <!-- getting the selection input from the user -->
+            <div class="input-group">
+                <label for="conversion-type">Conversion:</label>
+                <select id="conversion-type" onchange="updateFormula()">
+                    <option value="ftoc">Fahrenheit to Celsius</option>
+                    <option value="ctof">Celsius to Fahrenheit</option>
+                </select>
+            </div>
+            
+            <!-- display the formula based on the selection -->
+            <div id="formula" class="formula">°C = (°F - 32) × 5/9</div>
+            
+            <!-- appropriate functions are called when clicked on each button -->
+            <div>
+                <button onclick="convertTemperature()">Convert</button>
+                <button onclick="clearConverter()" class="clear">Clear</button>
+            </div>
+            
+            <div id="conversion-result" class="result">
+                <!-- result will be displayed here -->
+            </div>
+
+            
+            <!-- TODO -->
+            <!-- add temperatur assessment div here with id="temp-assessment" class="assessment" -->
+            <div id="temp-assessment"></div>
+            
+        </div>
+
+        <script src="temp-converter.js"></script>
+    </body>
+</html>
         </div>
 
         <!-- Magic 8 Ball App -->
@@ -82,39 +104,45 @@
             </div>
         </div>
 
-        <!-- Task List App -->
-        <div id="tasklist-app" class="app-section">
-            <div class="container">
-                <h1>Tasks For Today with Wellness Suggestions</h1>
-                
-                <div class="app-description">
-                    <p>This app helps you organize tasks that need to be completed today. Add your tasks with a priority number (1-5, where 1 is highest priority). Tasks will be automatically sorted by priority.</p>
-                    <p>Use the "Random Task" button for health and wellness suggestions to take care of yourself throughout your day!</p>
-                </div>
-                
-                <div class="input-container">
-                    <div class="input-group">
-                        <input type="text" id="task-input" placeholder="Enter a wellness task...">
-                        <select id="priority-input">
-                            <option value="1">Priority 1</option>
-                            <option value="2">Priority 2</option>
-                            <option value="3" selected>Priority 3</option>
-                            <option value="4">Priority 4</option>
-                            <option value="5">Priority 5</option>
-                        </select>
-                    </div>
-                    <div class="button-group">
-                        <button id="add-button" onclick="addTask()">Add Task</button>
-                        <button id="clear-input-button" onclick="clearInput()">Clear Input</button>
-                        <button id="random-task-button" onclick="addRandomTask()">Random Task</button>
-                    </div>
-                </div>
-                <div class="tasks-container">
-                    <h2>Your Tasks <button id="clear-tasks-button" onclick="clearTasks()">Clear All Tasks</button></h2>
-                    <ul id="task-list" class="task-list"></ul>
-                </div>
-            </div>
+        <!-- Task List App- Project 2 -->
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Tasks For Today</title>
+    <link rel="stylesheet" href="tasklist-modified.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>TaskList with Wellness Suggestions</h1>
+      
+      <div class="app-description">
+        <p>This app helps you organize tasks that need to be completed today. Add your tasks with a due date (MM/DD) and time (24-hour format). Tasks will be automatically sorted by due date and time.</p>
+        <p>Use the "Random Task" button for health and wellness suggestions to take care of yourself throughout your day!</p>
+      </div>
+      
+      <div class="input-container">
+        <div class="input-group">
+          <input type="text" id="task-input" placeholder="Enter a task...">
+          <input type="text" id="date-input" placeholder="MM/DD" maxlength="5">
+          <input type="text" id="time-input" placeholder="HH:MM" maxlength="5">
         </div>
+        <div class="button-group">
+          <button id="add-button" onclick="addTask()">Add Task</button>
+          <button id="clear-input-button" onclick="clearInput()">Clear Input</button>
+          <button id="random-task-button" onclick="addRandomTask()">Random Task</button>
+        </div>
+      </div>
+      <div class="tasks-container">
+        <h2>Your Tasks <button id="clear-tasks-button" onclick="clearTasks()">Clear All Tasks</button></h2>
+        <ul id="task-list" class="task-list"></ul>
+      </div>
+    </div>
+
+    <script src="tasklist-modified.js"></script>
+  </body>
+</html>
 
         <!-- Countdown Timer App -->
         <div id="timer-app" class="app-section">
@@ -164,83 +192,91 @@
         </div>
 
         <!-- Calculator App -->
-        <div id="calculator-app" class="app-section">
-            <div class="container">
-                <h1>Scientific Calculator</h1>
-                <div class="calculator">
-                    <div class="calculator-display">
-                        <div id="history"></div>
-                        <input type="text" id="display" readonly>
-                    </div>
-                    <div class="calculator-keys">
-                        <!-- First row -->
-                        <div class="calculator-row">
-                            <button class="btn-function" onclick="clearMemory()">MC</button>
-                            <button class="btn-function" onclick="recallMemory()">MR</button>
-                            <button class="btn-function" onclick="addToMemory()">M+</button>
-                            <button class="btn-function" onclick="subtractFromMemory()">M-</button>
-                            <button class="btn-function" onclick="clearAll()">C</button>
-                        </div>
-                        <!-- Second row -->
-                        <div class="calculator-row">
-                            <button class="btn-function" onclick="">x<sup>y</sup></button>
-                            <button class="btn-function" onclick="">√</button>
-                            <button class="btn-function" onclick="">|x|</button>
-                            <button class="btn-function" onclick="">π</button>
-                            <button class="btn-function" onclick="">e</button>
-                        </div>
-                        <!-- Third row -->
-                        <div class="calculator-row">
-                            <button class="btn-function" onclick="">sin</button>
-                            <button class="btn-function" onclick="">cos</button>
-                            <button class="btn-function" onclick="">tan</button>
-                            <button class="btn-function" onclick="">log</button>
-                            <button class="btn-function" onclick="">exp</button>
-                        </div>
-                        <!-- Fourth row -->
-                        <div class="calculator-row">
-                            <button class="btn-function" onclick="">asin</button>
-                            <button class="btn-function" onclick="">acos</button>
-                            <button class="btn-function" onclick="">atan</button>
-                            <button class="btn-function" onclick="">ln2</button>
-                            <button class="btn-function" onclick="">ln10</button>
-                        </div>
-                        <!-- Fifth row -->
-                        <div class="calculator-row">
-                            <button class="btn-number" onclick="appendToDisplay('7')">7</button>
-                            <button class="btn-number" onclick="appendToDisplay('8')">8</button>
-                            <button class="btn-number" onclick="appendToDisplay('9')">9</button>
-                            <button class="btn-operator" onclick="appendToDisplay('/')">/</button>
-                            <button class="btn-function" onclick="">round</button>
-                        </div>
-                        <!-- Sixth row -->
-                        <div class="calculator-row">
-                            <button class="btn-number" onclick="appendToDisplay('4')">4</button>
-                            <button class="btn-number" onclick="appendToDisplay('5')">5</button>
-                            <button class="btn-number" onclick="appendToDisplay('6')">6</button>
-                            <button class="btn-operator" onclick="appendToDisplay('*')">×</button>
-                            <button class="btn-function" onclick="">ceil</button>
-                        </div>
-                        <!-- Seventh row -->
-                        <div class="calculator-row">
-                            <button class="btn-number" onclick="appendToDisplay('1')">1</button>
-                            <button class="btn-number" onclick="appendToDisplay('2')">2</button>
-                            <button class="btn-number" onclick="appendToDisplay('3')">3</button>
-                            <button class="btn-operator" onclick="appendToDisplay('-')">-</button>
-                            <button class="btn-function" onclick="">floor</button>
-                        </div>
-                        <!-- Eighth row -->
-                        <div class="calculator-row">
-                            <button class="btn-number" onclick="appendToDisplay('0')">0</button>
-                            <button class="btn-number" onclick="appendToDisplay('.')">.</button>
-                            <button class="btn-equals" onclick="calculate()">=</button>
-                            <button class="btn-operator" onclick="appendToDisplay('+')">+</button>
-                            <button class="btn-function" onclick="deleteLast()">⌫</button>
-                        </div>
-                    </div>
-                </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-display">
+            <div id="history"></div>
+            <input type="text" id="display" readonly>
+        </div>
+        <div class="calculator-keys">
+            <!-- First row: should be working at the end of lab7 -->
+            <div class="calculator-row">
+                <button type="button" class="btn-function" onclick="clearMemory()">MC</button>
+                <button type="button" class="btn-function" onclick="recallMemory()">MR</button>
+                <button type="button" class="btn-function" onclick="addToMemory()">M+</button>
+                <button type="button" class="btn-function" onclick="subtractFromMemory()">M-</button>
+                <button type="button" class="btn-function" onclick="clearAll()">C</button>
+            </div>
+            <!-- Second row:  for future implementation -->
+            <div class="calculator-row">
+                <button type="button" class="btn-function" onclick="insertMathFunction('pow')">x<sup>y</sup></button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('sqrt')">√</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('abs')">|x|</button>
+                <button type="button" class="btn-function" onclick="insertMathConstant('Math.PI')">π</button>
+                <button type="button" class="btn-function" onclick="insertMathConstant('Math.E')">e</button>
+            </div>
+            <!-- Third row: for future implementation -->
+            <div class="calculator-row">
+                <button type="button" class="btn-function" onclick="insertMathFunction('sin')">sin</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('cos')">cos</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('tan')">tan</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('log')">log</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('exp')">exp</button>
+            </div>
+            <!-- Fourth row:  for future implementation -->
+            <div class="calculator-row">
+                <button type="button" class="btn-function" onclick="insertMathFunction('asin')">asin</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('acos')">acos</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('atan')">atan</button>
+                <button type="button" class="btn-function" onclick="insertMathConstant('Math.LN2')">ln2</button>
+                <button type="button" class="btn-function" onclick="insertMathConstant('Math.LN10')">ln10</button>
+            </div>
+            <!-- Fifth row: should be working at the end of lab7  -->
+            <div class="calculator-row">
+                <button type="button" class="btn-number" onclick="appendToDisplay('7')">7</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('8')">8</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('9')">9</button>
+                <button type="button" class="btn-operator" onclick="appendToDisplay('/')">/</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('round')">round</button>
+            </div>
+            <!-- Sixth row: should be working at the end of lab7  -->
+            <div class="calculator-row">
+                <button type="button" class="btn-number" onclick="appendToDisplay('4')">4</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('5')">5</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('6')">6</button>
+                <button type="button" class="btn-operator" onclick="appendToDisplay('*')">×</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('ceil')">ceil</button>
+            </div>
+            <!-- Seventh row: should be working at the end of lab7  -->
+            <div class="calculator-row">
+                <button type="button" class="btn-number" onclick="appendToDisplay('1')">1</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('2')">2</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('3')">3</button>
+                <button type="button" class="btn-operator" onclick="appendToDisplay('-')">-</button>
+                <button type="button" class="btn-function" onclick="insertMathFunction('floor')">floor</button>
+            </div>
+            <!-- Eighth row: should be working at the end of lab7  -->
+            <div class="calculator-row">
+                <button type="button" class="btn-number" onclick="appendToDisplay('0')">0</button>
+                <button type="button" class="btn-number" onclick="appendToDisplay('.')">.</button>
+                <button type="button" class="btn-equals" onclick="calculate()">=</button>
+                <button type="button" class="btn-operator" onclick="appendToDisplay('+')">+</button>
+                <button type="button" class="btn-function" onclick="deleteLast()">⌫</button>
             </div>
         </div>
+    </div>
+    <script src="calculator-starter.js"></script>
+</body>
+</html>
+
 
         <!-- Contacts App -->
         <div id="contacts-app" class="app-section">
